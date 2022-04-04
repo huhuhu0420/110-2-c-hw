@@ -8,12 +8,12 @@ int getStartIndex(int *num, int maxLen){
             start = i;
             break;
         }
-        i--;
+        i--; 
     }
     return start;
 }
 
-void printAns(int *ans, int len){
+void printBig(int *ans, int len){
     int i=0, start=0;
     
     start = getStartIndex(ans, len);
@@ -28,7 +28,7 @@ void printAns(int *ans, int len){
 
 int isSmallerThan(int *num1, int *num2){
     int i;
-    for(i=39; i>=0; i--){
+    for(i=40; i>=0; i--){
         if(num1[i] < num2[i]){
             return 1;            
         }
@@ -36,7 +36,7 @@ int isSmallerThan(int *num1, int *num2){
             return 0;
         }
     }
-    return 0;
+    return 1;
 }
 
 void subNum(int *num1, int *num2, int *ans){
@@ -74,23 +74,54 @@ void single_mulNum(int *num1, int n, int *temp){
     }
 }
 
+int getSingleNum(int *num1, int *num2, int len){
+    int i, temp[41] = {0}, tempNext[41] = {0};
+    for(i=0; i<=9; i++){
+        single_mulNum(temp, 0, temp);
+        single_mulNum(tempNext, 0, temp);
+
+        single_mulNum(num2, i, temp);
+        shiftRight(temp, len);
+        printBig(temp, 41);
+        printf("\n");
+        if(isSmallerThan(temp, num1) == 1){
+            single_mulNum(num2, i+1, tempNext);
+            shiftRight(tempNext, len);
+            if(isSmallerThan(tempNext, num1) == 0){
+                return i;
+            }
+        }
+        else{
+            return 0;
+        }
+    }
+    return 0;
+}
+
 void divideNum(int *num1, int *num2, int *ans){
-    int i, start1, start2;
+    int singleNum, start1, start2, len;
     int temp[41]={0};
     start1 = getStartIndex(num1, 41);
     start2 = getStartIndex(num2, 41);
 
-    for(i=start1-start2; i>=0; i--){
-        single_mulNum(num2, 1, temp);
-        shiftRight(temp, i);
-        printAns(temp, 41);
-        printf("\n");
-        if(isSmallerThan(temp, num1) == 1){
-            subNum(num1, temp, num1);
-            printAns(num1, 41);
+    for(len=start1-start2; len>=0; len--){
+        singleNum = getSingleNum(num1, num2, len);
+        printf("singleNum = %d\n", singleNum);
+        shiftRight(ans, 1);
+        ans[0] = singleNum;
+        printBig(ans, 41);
+        printf(" -- ans\n");
+        if(singleNum != 0){
+            single_mulNum(num2, singleNum, temp);
+            shiftRight(temp, len);
+            printBig(temp, 41);
             printf("\n");
+            subNum(num1, temp, num1);
+            printBig(num1, 41);
+            printf("--subNum\n");
         }
     }
+    printBig(ans, 41);
 }
 
 void transInt(char *cnum, int *num, int len){
