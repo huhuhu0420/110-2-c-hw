@@ -82,8 +82,6 @@ int getSingleNum(int *num1, int *num2, int len){
 
         single_mulNum(num2, i, temp);
         shiftRight(temp, len);
-        // printBig(temp, 41);
-        // printf("\n");
         if(isSmallerThan(temp, num1) == 1){
             single_mulNum(num2, i+1, tempNext);
             shiftRight(tempNext, len);
@@ -106,19 +104,12 @@ void divideNum(int *num1, int *num2, int *ans){
 
     for(len=start1-start2; len>=0; len--){
         singleNum = getSingleNum(num1, num2, len);
-        // printf("singleNum = %d\n", singleNum);
         shiftRight(ans, 1);
         ans[0] = singleNum;
-        // printBig(ans, 41);
-        // printf(" -- ans\n");
         if(singleNum != 0){
             single_mulNum(num2, singleNum, temp);
             shiftRight(temp, len);
-            // printBig(temp, 41);
-            // printf("\n");
             subNum(num1, temp, num1);
-            // printBig(num1, 41);
-            // printf("--subNum\n");
         }
     }
 }
