@@ -1,0 +1,62 @@
+        -:    0:Source:unitTest.c
+        -:    0:Graph:unitTest.gcno
+        -:    0:Data:unitTest.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdio.h> // main.c
+        -:    2:#include <math.h>
+        -:    3:#include <assert.h>
+function computeBMI called 4 returned 100% blocks executed 100%
+        4:    4:double computeBMI(int kg, int height) {
+        4:    5:    double BMI = 0.0, M = height/100.0;
+        4:    6:    if (kg<=0 || height<=0)
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        3:    7:        return -1;
+        1:    8:    BMI = round(100*kg/(M*M))/100; //四捨五入取兩位小數
+        1:    9:    return BMI;
+        -:   10:}
+function main called 1 returned 100% blocks executed 73%
+        1:   11:int main() {
+        1:   12:    int kg = 52, height = 155;
+        1:   13:    double expectedResult = 21.64f;
+        1:   14:    double result = computeBMI(kg, height);
+call    0 returned 1
+       1*:   15:    assert(fabs(result-expectedResult)<0.0001);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+call    2 never executed
+        -:   16:
+        1:   17:    kg = 1;
+        1:   18:    height = -1;
+        1:   19:    expectedResult = -1;
+        1:   20:    result = computeBMI(kg, height);
+call    0 returned 1
+       1*:   21:    assert(fabs(result-expectedResult)<0.0001);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+call    2 never executed
+        1:   22:    kg = -1;
+        1:   23:    height = 1;
+        1:   24:    expectedResult = -1;
+        1:   25:    result = computeBMI(kg, height);
+call    0 returned 1
+       1*:   26:    assert(fabs(result-expectedResult)<0.0001);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+call    2 never executed
+        1:   27:    kg = -1;
+        1:   28:    height = -1;
+        1:   29:    expectedResult = -1;
+        1:   30:    result = computeBMI(kg, height);
+call    0 returned 1
+       1*:   31:    assert(fabs(result-expectedResult)<0.0001);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+call    2 never executed
+        1:   32:    printf("Hi\n");
+call    0 returned 1
+        1:   33:return 0;
+        -:   34:}
+        -:   35:
