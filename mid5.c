@@ -75,7 +75,6 @@ int main(){
 
     i = 0;
     
-    
     while(outNum < outTotal){
         printf("----%d %d |\t", i, player[i].hit[round]);
         if(player[i].hit[round] == 0){
@@ -93,6 +92,9 @@ int main(){
         }
         printf("total score = %d\n", score);
     }
-    printf("--%d", score);
+    printf("--%d\n", score);
+    for (i=0; i<3; i++) {
+        printf("%d %d\n", i+1, player[i].hasHit);
+    }
     return 0;
 }
