@@ -125,8 +125,7 @@ int isSmallerThan(int *num1, int *num2){
 }
 
 void test01(){
-    int *num1 = calloc(40, sizeof(int)), *num2 = calloc(40, sizeof(int));
-    int *ans = calloc(82, sizeof(int));
+    int num1[40]={0}, num2[40]={0}, ans[82]={0};
     int len1=0, len2=0, flag=0;
     char cnum1[41], cnum2[41];
 
