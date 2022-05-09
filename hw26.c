@@ -39,8 +39,6 @@ void process (int type) {
     else if (type == 2)  f = f2;
     while (1) {
         area = getArea(p, q, n, a,f);
-        printf("%.12lf   ", area);
-        printf("%lf\n", n);
         if (fabs(area - pre_area) < pow(10.0L, -1*err) && fabs(area - pre_area)>0.0L) break;
         pre_area = area;
         n = n * 2.0L;
