@@ -49,13 +49,6 @@ void arrange (machine_t *machine, task_t *task, int m, int *flag) {
     task[task_id].current_id += 1;
     //printf("+++%d %d\n", task[task_id].current_id, task[task_id].process_num);
     task[task_id].haveDone_time = (*machine).time[task[task_id].process[process_id].machine_id];
-    //for (int i=0; i<(*machine).num; i++) {
-    //    printf("%d:%d ", i, (*machine).time[i]);
-    //}
-    //printf("\n");
-    //for (int i=1; i<=m; i++) {
-    //    printf("%d %d %d %d\n", i, task[i].current_id, task[i].haveDone_time, task[i].haveDone_time);
-    //}
     if (task_id == -1) {
         *flag = -1;
         return;
@@ -88,14 +81,6 @@ int main () {
             scanf("%d %d", &task[i].process[j].machine_id , &task[i].process[j].time);
         }
     }
-    // for (i=1; i<=m; i++) {
-    //     printf("%d--> ", i);
-    //     for (j=1; j<=task[i].process_num; j++) {
-    //         printf("%d %d, ", task[i].process[j].machine_id, task[i].process[j].time);
-    //     }
-    //     printf("\n");
-    // }
-    
     do_sth(machine, task, m);
 
     return 0;
