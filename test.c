@@ -46,8 +46,21 @@ void test01(){
     printf("%d\n", *p+2);
 }
 
+#include <string.h>
+typedef struct person_s{
+    int score;
+    char name[];
+} person_t;
+void getHigh (person_t s[2], int no, char name[]) {
+    if (s[0].score > s[1].score)  strcpy(name, s[0].name); 
+    else  strcpy(name, s[1].name); 
+}
+
+struct sth {
+    unsigned int a : 31;
+};
+
 int main(){
-    test10();
 
     return 0;
 }
