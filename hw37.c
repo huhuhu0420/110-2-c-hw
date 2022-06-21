@@ -62,7 +62,7 @@ void printList (nodep_t p) {
     if (notZero == 0)  printf("0");
 }
 
-nodep_t getInput (nodep_t p) {
+nodep_t getInput (nodep_t p) { 
     int data[20] = {0}, count = 0;
     char c;
     while (1) {

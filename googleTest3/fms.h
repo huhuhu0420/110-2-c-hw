@@ -1,0 +1,1 @@
+char * FMS(char *s);

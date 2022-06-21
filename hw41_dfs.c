@@ -33,18 +33,15 @@ int dfs (int d[][10], int n, int start) {
 }
 
 int main () {
-    int n, d[10][10], dis, minDis = 999999;
+    int n, d[10][10], dis;
     scanf("%d", &n);
     for (int i=0; i<n; i++) {
         for (int j=0; j<n; j++) {
             scanf("%d", &d[i][j]);
         }
     }
-    for (int i=0; i<n; i++) {
-        dis = dfs(d, n, 0);
-        if (dis < minDis)  minDis = dis;  
-    }
-    printf("%d", minDis);
+    dis = dfs(d, n, 0);
+    printf("%d", dis);
 
     return 0;
 }

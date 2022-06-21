@@ -6,7 +6,7 @@ typedef struct data_s {
     unsigned char b1: 1;
     unsigned char b2: 1;
     unsigned char b3: 1;
-    unsigned char b4: 1;
+    unsigned int b4: 1;
     unsigned char status: 4;
 } data_t;
 
@@ -14,8 +14,8 @@ void test01 () {
     data_t data;
     printf("%d\n", sizeof(unsigned char));
     printf("%d\n", sizeof(unsigned));
-    printf("%d\n", sizeof(data_t));
-    scanf("%c", &data);
+    printf("%d\n", sizeof(data));
+    scanf("%x", &data);
     printf("%d", data.b4);
     printf("%d", data.b3);
     printf("%d", data.b2);
